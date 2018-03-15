@@ -1,2 +1,2 @@
-# ansible
-My collection of asnsible stuff
+# Ansible
+This is my collection of public ansible stuff.

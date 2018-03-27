@@ -9,10 +9,10 @@ vagrant plugin install vagrant-hostsupdater
 cat >> ~/.ssh/config <<EOF
 # For vagrant virtual machines
 host 192.168.121.* *.ansible.dev
-StrictHostKeyChecking no
-UserKnownHostsFile=/dev/null
-User root
-LogLevel ERROR
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+    User root
+    LogLevel ERROR
 EOF
 cat > ~/ansible_dev/hosts <<EOF
 [local]

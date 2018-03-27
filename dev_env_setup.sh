@@ -11,7 +11,7 @@ cat >> ~/.ssh/config <<EOF
 host 192.168.121.* *.ansible.dev
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
-    User root
+    User vagrant
     LogLevel ERROR
 EOF
 cat > ~/ansible_dev/hosts <<EOF

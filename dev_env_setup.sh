@@ -14,3 +14,7 @@ UserKnownHostsFile=/dev/null
 User root
 LogLevel ERROR
 EOF
+cat > ~/ansible_dev/hosts <<EOF
+[local]
+localhost ansible_connection=local
+EOF

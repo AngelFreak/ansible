@@ -8,7 +8,7 @@ cp ansible.cfg ~/ansible_dev/
 vagrant plugin install vagrant-hostsupdater
 cat >> ~/.ssh/config <<EOF
 # For vagrant virtual machines
-host 192.168.33.* *.ansible.dev
+host 192.168.121.* *.ansible.dev
 StrictHostKeyChecking no
 UserKnownHostsFile=/dev/null
 User root

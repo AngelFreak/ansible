@@ -8,4 +8,5 @@ Working ansible version 2.4 or newer.
 
 # Requirements for dev env setup
 bash
+
 Xbps package manager for vagrant, and ansible install.

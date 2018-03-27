@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo xbps-install -Su vagrant
+sudo xbps-install -Su vagrant, ansible
 mkdir -p ~/ansible_dev/
 mkdir -p ~/ansible_dev/roles
 mkdir -p ~/ansible_dev/playbooks

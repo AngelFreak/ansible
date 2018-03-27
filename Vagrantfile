@@ -15,6 +15,15 @@ Vagrant.configure(2) do |config|
       machine.vm.network 'private_network', ip: ipaddr, netmask: "255.255.255.0"
       machine.vm.provision "file", source: "~/.ssh/id_ed25519.pub", destination: "~/.ssh/authorized_keys"
       machine.vm.hostname = name + ".ansible.dev"
+      machine.vm.provision 'shell',
+        privileged: true,
+        run: 'once',
+        inline:
+          'mkdir -p /root/.ssh && ' +
+          'cp /home/vagrant/.ssh/authorized_keys /root/.ssh/ && ' +
+          'chown root:root /root/.ssh/authorized_keys && ' +
+          'chmod 600 /root/.ssh/authorized_keys && ' +
+          'echo "Done!"'
     end
   end
 end

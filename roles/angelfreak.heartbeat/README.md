@@ -8,7 +8,10 @@ The role is made for haproxy, but can be used for other usecases.
 Requirements
 ------------
 
-This role requires Ansible 2.2 or higher, and platform requirements are listed in the metadata file.
+This role requires Ansible 2.2 or higher.
+
+This role is tested and verified on the following platforms:
+Ubuntu Xenial
 
 Role Variables
 --------------

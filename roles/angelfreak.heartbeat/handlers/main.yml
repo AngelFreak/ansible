@@ -1,0 +1,6 @@
+---
+- name: Enable heartbeat
+  service:
+    name: heartbeat
+    enabled: yes
+    state: started

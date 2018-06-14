@@ -1,0 +1,32 @@
+{% if ansible_hostname == primary %}
+  {% set target = backup_ip %}
+{% else %}
+  {% set target = primary_ip %}
+{% endif %}
+#{{ ansible_managed }}
+#
+#       keepalive: how many seconds between heartbeats
+#
+keepalive 2
+#
+#       deadtime: seconds-to-declare-host-dead
+#
+deadtime 10
+#
+#       What UDP port to use for udp or ppp-udp communication?
+#
+udpport        694
+bcast {{ interface }}
+mcast {{ interface }} 225.0.0.1 694 1 0
+ucast {{ interface }} {{ target }}
+#       What interfaces to heartbeat over?
+udp     {{ interface }}
+#
+#       Facility to use for syslog()/logger (alternative to log/debugfile)
+#
+logfacility     local0
+#
+#       Tell what machines are in the cluster
+#       node    nodename ...    -- must match uname -n
+node    {{ primary }}
+node    {{ backup }}

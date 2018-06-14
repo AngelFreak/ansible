@@ -1,0 +1,46 @@
+---
+- name: Install package.
+  apt:
+    name: heartbeat
+    state: latest
+
+- name: Read the sysctl file.
+  shell: cat /etc/sysctl.conf
+  register: ipv4_nonlocal
+  changed_when: false
+
+- name: Allow bind to shared IP.
+  when: ipv4_nonlocal.stdout.find('net.ipv4.ip_nonlocal_bind=1') == -1
+  lineinfile:
+    dest=/etc/sysctl.conf
+    line="net.ipv4.ip_nonlocal_bind=1"
+  register: bind
+
+- name: Reload the sysctl file
+  shell: sysctl -p
+  when: bind.changed
+
+- name: Make authkeys
+  template:
+    src: templates/authkeys.j2
+    dest: /etc/ha.d/authkeys
+    owner: root
+    group: root
+    mode: 600
+
+- name: Make ha.cf
+  template:
+    src: templates/ha.cf.j2
+    dest: /etc/ha.d/ha.cf
+    owner: root
+    group: root
+    mode: 600
+
+- name: Make haresources
+  template:
+    src: templates/haresources.j2
+    dest: /etc/ha.d/haresources
+    owner: root
+    group: root
+    mode: 600
+  notify: Enable heartbeat

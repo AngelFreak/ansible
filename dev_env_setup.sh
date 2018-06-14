@@ -1,8 +1,11 @@
 #!/bin/bash
 sudo xbps-install -Su vagrant, ansible
+#!/bin/bash
 mkdir -p ~/ansible_dev/
 mkdir -p ~/ansible_dev/roles
 mkdir -p ~/ansible_dev/playbooks
+mkdir -p ~/ansible_dev/host_vars
+mkdir -p ~/ansible_dev/group_vars
 cp Vagrantfile ~/ansible_dev/
 cp ansible.cfg ~/ansible_dev/
 vagrant plugin install vagrant-hostsupdater
